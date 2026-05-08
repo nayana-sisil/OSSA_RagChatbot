@@ -29,12 +29,17 @@ class QueryResponse(BaseModel):
     answer: str
     sources: List[Source]
 
-@app.get("/")
+@app.get("/", tags=["General"])
 async def root():
+    """Health check endpoint to verify backend connectivity."""
     return {"message": "OSSA AI Tutor Backend is running!"}
 
-@app.post("/ask", response_model=QueryResponse)
+@app.post("/ask", response_model=QueryResponse, tags=["AI Tutor"])
 async def ask_question(request: QueryRequest):
+    """
+    Core RAG endpoint. Accepts a question and optional exam_mode flag.
+    Retrieves relevant lecture context and generates a grounded response.
+    """
     if not request.question.strip():
         raise HTTPException(status_code=400, detail="Question cannot be empty.")
     
