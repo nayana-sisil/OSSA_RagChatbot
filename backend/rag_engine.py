@@ -41,7 +41,12 @@ is_indexing = False
 indexing_progress = ""
 
 def get_index():
-    """Load existing index or return None if it needs building."""
+    """
+    Attempts to load an existing FAISS index from the local vector_db storage.
+    
+    Returns:
+        VectorStoreIndex or None: The loaded index if found, otherwise None.
+    """
     global index
     if os.path.exists(os.path.join(DB_FAISS_PATH, "default__vector_store.json")):
         print("Loading existing index from storage...")
@@ -54,7 +59,16 @@ def get_index():
     return None
 
 def build_index_background():
-    """Build the index in the background to avoid blocking the server."""
+    """
+    Executes the indexing process in a separate thread to maintain server responsiveness.
+    
+    This function:
+    1. Loads all PDF documents from the data directory.
+    2. Parses them into semantic nodes using SentenceSplitter.
+    3. Iteratively inserts nodes into a FAISS vector store.
+    4. Implements a mandatory delay and retry logic to respect Gemini API rate limits.
+    5. Persists the final index to the local vector_db folder.
+    """
     global index, is_indexing, indexing_progress
     if is_indexing:
         return
