@@ -37,14 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const question = userInput.value.trim();
         if (!question) return;
 
-        // Clear input
+        // Clear input field and reset height
         userInput.value = '';
         userInput.style.height = 'auto';
 
-        // Add user message to UI
+        // Add user's message to the UI immediately
         addMessageToUI('user', question);
 
-        // Add typing indicator
+        // Display typing indicator while waiting for API response
         const typingIndicator = addTypingIndicator();
         
         try {
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const data = await response.json();
             
-            // Remove typing indicator and add assistant message
+            // Remove the typing indicator and render the AI response
             typingIndicator.remove();
             addMessageToUI('assistant', data.answer, data.sources);
 
