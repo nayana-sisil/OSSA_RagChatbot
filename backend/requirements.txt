@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+python-dotenv
+llama-index
+llama-index-llms-gemini
+llama-index-embeddings-gemini
+llama-index-vector-stores-faiss
+faiss-cpu
+pillow==12.2.0
+pypdf
+pydantic
