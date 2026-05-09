@@ -293,6 +293,15 @@ input:checked + .slider:before {
     border-radius: 6px;
     font-size: 0.75rem;
     color: var(--text-secondary);
+    transition: all 0.2s ease;
+    cursor: default;
+}
+
+.source-tag:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+    color: var(--text-primary);
 }
 
 /* Input Area */

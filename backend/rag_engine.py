@@ -28,7 +28,7 @@ if not GOOGLE_API_KEY:
     raise ValueError("GOOGLE_API_KEY is not set in environment variables.")
 
 # Global Settings
-Settings.llm = Gemini(model_name="models/gemini-flash-latest", api_key=GOOGLE_API_KEY, temperature=0.3)
+Settings.llm = Gemini(model_name="models/gemini-2.0-flash-lite", api_key=GOOGLE_API_KEY, temperature=0.3)
 Settings.embed_model = GeminiEmbedding(model_name="models/gemini-embedding-001", api_key=GOOGLE_API_KEY)
 # Larger chunk size to reduce number of nodes for rate-limited free tier
 Settings.node_parser = SentenceSplitter(chunk_size=4000, chunk_overlap=200)
