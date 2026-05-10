@@ -32,7 +32,11 @@ class QueryResponse(BaseModel):
 @app.get("/", tags=["General"])
 async def root():
     """Health check endpoint to verify backend connectivity."""
-    return {"message": "OSSA AI Tutor Backend is running!"}
+    return {
+        "name": "OSSA AI Tutor API",
+        "version": "1.0.0",
+        "status": "online"
+    }
 
 @app.post("/ask", response_model=QueryResponse, tags=["AI Tutor"])
 async def ask_question(request: QueryRequest):
