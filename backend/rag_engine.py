@@ -87,7 +87,8 @@ def build_index_background():
             is_indexing = False
             return
 
-        # Dimensions for gemini-embedding-001 is 3072
+        # Dimensions for gemini-embedding-001 is fixed at 3072.
+        # This matches the L2 distance index requirements for FAISS.
         d = 3072
         faiss_index = faiss.IndexFlatL2(d)
         vector_store = FaissVectorStore(faiss_index=faiss_index)
