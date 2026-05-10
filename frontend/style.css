@@ -30,6 +30,12 @@ body {
     display: flex;
     width: 100%;
     height: 100%;
+    animation: appFadeIn 0.8s ease-out;
+}
+
+@keyframes appFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* Sidebar Styling */
