@@ -20,6 +20,10 @@ The OSSA AI Tutor helps students understand complex operating system concepts by
 - Frontend: HTML5, CSS3, Vanilla JavaScript.
 - Indexing: Sentence-based chunking with semantic vector search via gemini-embedding-001.
 
+## Supported Document Types
+
+The system currently focuses on PDF processing, which is ideal for university lecture slides and handouts. All documents placed in the `backend/data/` directory will be processed into semantic nodes for the RAG pipeline.
+
 ## Repository Structure
 
 - backend/: Contains the FastAPI server, LlamaIndex RAG engine, and document processing logic.
